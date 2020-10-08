@@ -1,0 +1,41 @@
+\mode<presentation>
+
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \ifnum\thepage=1\relax%
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \fill[left color=lightred, right color=darkred] (0,0) rectangle(\the\paperwidth, 2.5);
+    \node[anchor=south west,yshift=16pt] at (current page.south west) {\includegraphics[height=1.1cm]{aut_logo}};
+    \else\relax%
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \fill[left color=lightred, right color=darkred] (0,0) rectangle(\the\paperwidth, 0.8);
+    \node[anchor=south west,yshift=1pt] at (current page.south west) {\includegraphics[height=.5cm]{aut_logo_only}};
+      %\node[anchor=south] at (current page.south) {\insertframenumber};
+   \fi
+  \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{aut}[1][]
+{ 
+   \vfill%
+    \begin{beamercolorbox}[wd=12cm,leftskip=2.5cm,sep=8pt,#1]{title page header}
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip-0.2cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=2.5cm,sep=8pt,#1]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+    \vskip-0.4cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=2.5cm,sep=8pt,#1]{title page date}
+        \usebeamerfont{date}\insertdate\par%
+    \end{beamercolorbox}%
+     \vskip0.2cm%
+  \vfill
+}
+\setbeamertemplate{itemize item}{$\pmb{>}$}
+\setbeamertemplate{itemize subitem}{$\pmb{>}$}
+
+\mode
+<all>

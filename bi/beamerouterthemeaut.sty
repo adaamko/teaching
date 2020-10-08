@@ -1,0 +1,39 @@
+\mode<presentation>
+
+% Frame title
+\defbeamertemplate*{frametitle}{aut}[1][]
+{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+      \begin{tikzpicture}
+          \useasboundingbox[fill=white](0,0) rectangle(\the\paperwidth,1.2);
+          %\fill[orange] (0,0) rectangle(2.95,1.2);
+          %\fill[blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.2);
+           \ifx\insertframesubtitle\@empty%
+                   {\node[anchor=west, darkred,font=\Huge] at (.2,0.61){\insertframetitle};}
+           \else%
+                    {\node[anchor= west, darkred,font=\large] at (3.2,0.81){\insertframetitle};%
+                    \node[anchor= west, darkred,font=\small] at (3.2,0.41){\insertframesubtitle};}%
+            \fi
+      \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\newcommand{\myfootline}{
+\vskip1pt%
+\makebox[0pt][l]{\,}%
+\hspace*{\fill}\insertframenumber\,/\,\inserttotalframenumber\hspace*{\fill}%
+\llap{\insertshorttitle}
+}
+\setbeamertemplate{footline}{%
+    \ifnum \insertpagenumber>1
+    \begin{beamercolorbox}[wd=\paperwidth,ht=-2.2ex,dp=20pt,rightskip=.1cm]{footlinecolor}%
+        \usebeamerfont{framenumber}
+        \myfootline
+    \end{beamercolorbox}
+    \fi
+}
+
+
+
+
+\mode<all>
