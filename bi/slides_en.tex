@@ -312,9 +312,21 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{AI - ML - DL differences}
+    \begin{center}
+        \includegraphics[width=.8\textwidth]{fig/ai_ml_dl.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}{ML vs DL}
+    \begin{center}
+        \includegraphics[width=.8\textwidth]{fig/ml_dl_scale.png}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Deep learning}
     \begin{itemize}
-    	\item until know we talked about traditional Machine Learning
+    	\item until now we talked about traditional Machine Learning
         \item representation learning instead of task-specific manual features
         \item biological inspiration (neurons, activation)
         \item why Deep learning returned?
@@ -324,6 +336,37 @@
         	\item good methods
         \end{itemize}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Deep learning}
+    \begin{itemize}
+    	\item it has a black-box nature
+        \item interpreting them is hard
+        \item we don't exactly know the reasoning behind a decision
+        \item can we trust Deep learning?
+        \item the latest language model of \textbf{OpenAI}, GPT-3, has 175B trainable parameters \href{https://news.developer.nvidia.com/openai-presents-gpt-3-a-175-billion-parameters-language-model/}{link}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Terminology}
+    \begin{itemize}
+        \item How do ML/DL algorithms learn?
+        \item \textbf{Loss function}:  helps to calculate the prediction loss of our network, which tells us how bad/good is our model.
+        \item We want to \textbf{optimize} the loss/cost function.
+        \item How?
+            \begin{itemize}
+                \item \textbf{Gradient descent} helps us find the global minima of the loss function
+                \item \textbf{Backpropagation} algorithm is used to propagate the error back to the weights of the model and updates them
+            \end{itemize}
+    \end{itemize}   
+\end{frame}
+
+\begin{frame}{Under- and overfitting}
+	
+	\centering
+    \includegraphics[width=.8\textwidth]{fig/underover.png}
+    
+    We use \textbf{Regularization} to avoid overfitting.
 \end{frame}
 
 \begin{frame}{ML vs Deep learning}
@@ -354,51 +397,7 @@
 \begin{frame}{Feed forward neural network}
     \def\layersep{2.1cm}
 
-\begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=\layersep]
-    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
-    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
-    \tikzstyle{input neuron}=[neuron, fill=green!50];
-    \tikzstyle{output neuron}=[neuron, fill=red!50];
-    \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
-    \tikzstyle{annot} = [text width=3em, text centered]
-
-    % Draw the input layer nodes
-    \foreach \name / \y in {1,...,4}
-    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
-        \node[input neuron, pin=left:Input \#\y] (I-\name) at (0,-\y) {};
-
-    % Draw the hidden layer nodes
-    \foreach \name / \y in {1,...,5}
-        \path[yshift=0.5cm]
-            node[hidden neuron] (H-\name) at (\layersep,-\y cm) {};
-
-    \foreach \name / \y in {15,25,35,45}
-        \path[yshift=0.5cm]
-            node[hidden neuron] (H-\name) at (\layersep+\layersep,-\y mm) {};
-
-    % Draw the output layer node
-            \node[output neuron,pin={[pin edge={->}]right:Output}] (O) at (3*\layersep, -25 mm) {};
-
-    % Connect every node in the input layer with every node in the
-    % hidden layer.
-    \foreach \source in {1,...,4}
-        \foreach \dest in {1,...,5}
-            \path (I-\source) edge (H-\dest);
-
-    % Connect every node in the hidden layer with the output layer
-    \foreach \source in {1,...,5}
-        \foreach \dest in {15,25,35,45}
-            \path (H-\source) edge (H-\dest);
-
-    \foreach \source in {15,25,35,45}
-        \path (H-\source) edge (O);
-
-    % Annotate the layers
-    \node[annot,above of=H-1, node distance=1cm] (hl) {Hidden layer 1};
-    \node[annot,right of=hl, node distance=\layersep] (hl2) {Hidden layer 2};
-    \node[annot,left of=hl] {Input layer};
-    \node[annot,right of=hl2] {Output layer};
-\end{tikzpicture}
+ 
 \end{frame}
 
 \begin{frame}{Feed forward neural network}
